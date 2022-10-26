@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="./assets/favicon/favicon-32x32.png" sizes="32x32"/>
-    <link rel="apple-touch-icon" href="./assets/favicon/apple-icon.png"/>
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" sizes="32x32"/>
+    <link rel="apple-touch-icon" href="./assets/images/apple-icon.png"/>
     <meta name="description" content="The MindInterest is a psychological consultation application in which a person can book an appointment with a psychologist.
 This can be done by scheduling a session (voice or video conferencing) or in-app chat with the psychologist."/>
     <meta name="keywords" content="psychology, Mental health, doctor, consult, consultation, psychologist"/>
@@ -28,7 +28,7 @@ This can be done by scheduling a session (voice or video conferencing) or in-app
     <link rel="stylesheet" href="./assets/css/flaticon.css">
     <link rel="stylesheet" href="./assets/css/main.css">
 
-    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
 
 
 </head>
@@ -100,17 +100,17 @@ This can be done by scheduling a session (voice or video conferencing) or in-app
     $(document).ready(function () {
 
         //Load Popup on success
-        // const Toast = Swal.mixin({
-        //   toast: true,
-        //   position: 'top-end',
-        //   showConfirmButton: false,
-        //   timer: 3000,
-        //   timerProgressBar: true,
-        //   didOpen: (toast) => {
-        //     toast.addEventListener('mouseenter', Swal.stopTimer)
-        //     toast.addEventListener('mouseleave', Swal.resumeTimer)
-        //   }
-        // })
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
@@ -118,14 +118,13 @@ This can be done by scheduling a session (voice or video conferencing) or in-app
 
 
         if (sucess === "true") {
-            alert("successful")
-            // Toast.fire({
-            //   icon: 'success',
-            //   title: 'Registration Successful'
-            // })
+            Toast.fire({
+                icon: 'success',
+                title: "Thank You :)"
+            })
             setTimeout(() => {
                 location.replace('/');
-            }, 3000)
+            }, 4000)
         }
 
 

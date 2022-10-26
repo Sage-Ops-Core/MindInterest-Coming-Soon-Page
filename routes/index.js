@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 router.post('/', async function (req, res, next) {
     try {
         let email = req.body.email
-        await model.WaitList.create({email: email})
+        await model.WaitList.findOrCreate({where: {email: email}, defaults: email})
         res.redirect('/?success=true');
     } catch (e) {
         res.send('Error: ' + e)
